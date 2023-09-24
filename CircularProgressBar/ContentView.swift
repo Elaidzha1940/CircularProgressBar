@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var value = 0.0
     @State var showvalue = false
     @State var displayedValue = 0.0
-
+    
     
     var body: some View {
         
@@ -49,11 +49,24 @@ struct ContentView: View {
                 .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black, Color.clear]),
                                                 startPoint: .topLeading,
                                                 endPoint: .bottomTrailing))
+            NumProgress(displayedValue: displayedValue, color: .black)
         }
         .onTapGesture {
             withAnimation(.spring().speed(0.2)) {
                 showvalue.toggle()
-                value = 0.75
+                if showvalue {
+                    Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                        if displayedValue < value {
+                            displayedValue  += 0.01
+                            
+                        } else {
+                            timer.invalidate()
+                        }
+                    }
+                    
+                } else {
+                    displayedValue = 0.0
+                }
             }
         }
     }
@@ -68,5 +81,7 @@ struct NumProgress: View {
     var color : Color
     var body: some View {
         Text("\(Int(displayedValue))")
+            .font(.system(size: 30, weight: .bold, design: .rounded))
+            .foregroundStyle(color)
     }
 }
