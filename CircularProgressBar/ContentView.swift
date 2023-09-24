@@ -41,6 +41,7 @@ struct ContentView: View {
                                                                 endPoint: .bottomTrailing))
                         }
                 }
+            
             Circle()
                 .trim(from: 0, to: showvalue ? value : 0)
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round))
@@ -65,7 +66,13 @@ struct ContentView: View {
                     }
                     
                 } else {
-                    displayedValue = 0.0
+                    Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                        if displayedValue > 0 {
+                            displayedValue -= 0.01
+                        } else {
+                            timer.invalidate()
+                        }
+                    }
                 }
             }
         }
@@ -80,8 +87,9 @@ struct NumProgress: View {
     var displayedValue = 0.0
     var color : Color
     var body: some View {
-        Text("\(Int(displayedValue))")
+        Text("\(Int(displayedValue * 100))").bold()
             .font(.system(size: 30, weight: .bold, design: .rounded))
             .foregroundStyle(color)
     }
 }
+
