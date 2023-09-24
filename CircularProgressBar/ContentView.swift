@@ -56,17 +56,16 @@ struct ContentView: View {
             withAnimation(.spring().speed(0.2)) {
                 showvalue.toggle()
                 if showvalue {
-                    Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                    Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { timer in
                         if displayedValue < value {
-                            displayedValue  += 0.01
-                            
+                            displayedValue += 0.01
                         } else {
                             timer.invalidate()
                         }
                     }
                     
                 } else {
-                    Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                    Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { timer in
                         if displayedValue > 0 {
                             displayedValue -= 0.01
                         } else {
@@ -79,16 +78,27 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+//    #Preview {
+//        ContentView()
+//    }
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
 
 struct NumProgress: View {
     var displayedValue = 0.0
     var color : Color
+    
     var body: some View {
-        Text("\(Int(displayedValue * 100))").bold()
-            .font(.system(size: 30, weight: .bold, design: .rounded))
+        
+        Text("\(Int(displayedValue * 75))")
+            .bold()
+            .font(.system(size: 30,
+                          weight: .bold,
+                          design: .rounded))
             .foregroundStyle(color)
     }
 }
