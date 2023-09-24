@@ -20,18 +20,32 @@ struct ContentView: View {
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 10, y: 10)
             
             Circle()
-                .stroke(lineWidth: 20)
+                .stroke(lineWidth: 0.35)
                 .frame(width: 1750, height: 175)
-                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black, Color.clear]), startPoint: .bottomLeading, endPoint: .topLeading))
+                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.1), Color.clear]),
+                                                startPoint: .bottomLeading,
+                                                endPoint: .topLeading))
                 .overlay {
                     Circle()
                         .stroke(.black.opacity(0.1), lineWidth: 2)
                         .blur(radius: 5)
+                        .mask {
+                            Circle()
+                                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black, Color.clear]),
+                                                                startPoint: .topLeading,
+                                                                endPoint: .bottomTrailing))
+                        }
                 }
-
-            
+            Circle()
+                .trim(from: 0, to: 0.2)
+                .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round))
+                .frame(width: 200, height: 200)
+                .rotationEffect(.degrees(-90))
+                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black, Color.clear]),
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing))
         }
-        .preferredColorScheme(.light)
+        //.preferredColorScheme(.light)
     }
 }
 
