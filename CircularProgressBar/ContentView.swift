@@ -50,10 +50,10 @@ struct ContentView: View {
             
             Circle()
                 .stroke(lineWidth: 0.35)
-                .frame(width: 1750, height: 175)
+                .frame(width: 175, height: 175)
                 .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.1), Color.clear]),
-                                                startPoint: .bottomLeading,
-                                                endPoint: .topLeading))
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing))
                 .overlay {
                     Circle()
                         .stroke(.black.opacity(0.1), lineWidth: 2)
