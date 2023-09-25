@@ -1,9 +1,11 @@
+//  /*
 //
-//  BlackProgress.swift
-//  CircularProgressBar
+//  Project: CircularProgressBar
+//  File: BlackProgress.swift
+//  Created by: Elaidzha Shchukin
+//  Date: 25.09.2023
 //
-//  Created by Elaidzha Shchukin on 25.09.2023.
-//
+//  */
 
 import SwiftUI
 

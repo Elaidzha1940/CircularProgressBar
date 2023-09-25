@@ -14,6 +14,7 @@ class TimeManager: ObservableObject {
     @Published var showvalue = false
     
     var value = 0.75
+    
     func startTimer() {
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [self] timer in
             if showvalue {
@@ -34,14 +35,12 @@ class TimeManager: ObservableObject {
 }
 
 struct ContentView: View {
-    //        @State var value = 0.0
-    //        @State var showvalue = false
-    //        @State var displayedValue = 0.0
-    
     @ObservedObject var tm = TimeManager()
+    
     var body: some View {
         
         ZStack {
+            
             Circle()
                 .stroke(lineWidth: 20)
                 .frame(width: 200, height: 200)
@@ -51,16 +50,16 @@ struct ContentView: View {
             Circle()
                 .stroke(lineWidth: 0.35)
                 .frame(width: 175, height: 175)
-                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.1), Color.clear]),
+                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.1), Color.clear]),
                                                 startPoint: .topLeading,
                                                 endPoint: .bottomTrailing))
                 .overlay {
                     Circle()
-                        .stroke(.white.opacity(0.1), lineWidth: 2)
+                        .stroke(.black.opacity(0.1), lineWidth: 2)
                         .blur(radius: 5)
                         .mask {
                             Circle()
-                                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.white, Color.clear]),
+                                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black, Color.clear]),
                                                                 startPoint: .topLeading,
                                                                 endPoint: .bottomTrailing))
                         }
@@ -84,10 +83,6 @@ struct ContentView: View {
         }
     }
 }
-
-//    #Preview {
-//        ContentView()
-//    }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
