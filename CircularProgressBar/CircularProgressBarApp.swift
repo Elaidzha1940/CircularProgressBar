@@ -13,7 +13,7 @@ import SwiftUI
 struct CircularProgressBarApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BlackProgress()
         }
     }
 }

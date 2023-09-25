@@ -51,16 +51,16 @@ struct ContentView: View {
             Circle()
                 .stroke(lineWidth: 0.35)
                 .frame(width: 175, height: 175)
-                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.1), Color.clear]),
+                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.1), Color.clear]),
                                                 startPoint: .topLeading,
                                                 endPoint: .bottomTrailing))
                 .overlay {
                     Circle()
-                        .stroke(.black.opacity(0.1), lineWidth: 2)
+                        .stroke(.white.opacity(0.1), lineWidth: 2)
                         .blur(radius: 5)
                         .mask {
                             Circle()
-                                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black, Color.clear]),
+                                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.white, Color.clear]),
                                                                 startPoint: .topLeading,
                                                                 endPoint: .bottomTrailing))
                         }
